@@ -2,40 +2,50 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
-  width: 100%;
+  width: 90%;
   height: 65px;
-  background-color: var(--color-secondary);
-  border-bottom: 1px solid var(--color-primary);
+  background: var(--color-background-secondary);
   display: flex;
   align-items: center;
   padding: 0 50px;
-  margin-bottom: 20px;
   position: sticky;
-  top: 0;
+  top: 10px;
+  left: 5%;
+  right: 5%;
+  margin-bottom: 50px;
   z-index: 10;
+  border-radius: 50px;
+  box-shadow: var(--shadow-component);
+  border-radius: 20px;
 `;
 
 export const StyledNav = styled.nav`
-  width: 300px;
+  width: 200px;
   display: flex;
   justify-content: space-evenly;
-  background-color: var(--color-primary);
-  border-radius: 50px;
 `;
 
 export const StyledNavLink = styled(NavLink)`
   width: 100%;
   height: 35px;
-  color: var(--color-text);
+  color: var(--color-primary);
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 3px;
+  }
+
   &.active {
-    background-color: var(--color-accent);
-    color: var(--color-text);
+    background: var(--color-primary);
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+    color: var(--color-text-black);
+    text-decoration: none;
   }
 `;

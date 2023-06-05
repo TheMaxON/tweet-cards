@@ -1,55 +1,37 @@
 import axios from 'axios';
 
-const API_KEY = 'a686af912263638c370a0fbfc3731476';
+axios.defaults.baseURL = 'https://647cd15dc0bae2880ad13a57.mockapi.io';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-
-export const getTrendingMovies = async () => {
+export const getTweets = async page => {
+  const params = new URLSearchParams();
+  params.append('page', page);
+  params.append('limit', 8);
   try {
-    const response = await axios.get(`trending/movie/day?api_key=${API_KEY}`);
-    return response.data.results;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getMovieInfo = async movieId => {
-  try {
-    const response = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
+    const response = await axios.get(`/tweets`, { params });
     return response.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getMovieCast = async movieId => {
+export const changeFollowingState = async (id, newState) => {
   try {
-    const response = await axios.get(
-      `movie/${movieId}/credits?api_key=${API_KEY}`
-    );
-    return response.data.cast;
+    const response = await axios.put(`/tweets/${id}`, newState);
+    return response.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getMovieReviews = async movieId => {
+export const refreshTweets = async numberOfTweets => {
+  const params = new URLSearchParams();
+  console.log(numberOfTweets);
+  params.append('page', 1);
+  params.append('limit', numberOfTweets);
   try {
-    const response = await axios.get(
-      `movie/${movieId}/reviews?api_key=${API_KEY}`
-    );
-    return response.data.results;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getSearchedMovies = async query => {
-  try {
-    const response = await axios.get(
-      `search/movie?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`
-    );
-    return response.data.results;
+    const response = await axios.get(`/tweets`, { params });
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

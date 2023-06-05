@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
-  --color-background: #02001e;
-  --color-accent: #5b4ffc;
-  --color-primary: #1a1a1a;
-  --color-secondary: #01000a;
-  --color-text: #f6f5ff;
+  --color-background: #f9fbfc;
+  --color-background-secondary: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  --color-primary: #ebd8ff;
+  --color-text-black: #373737;
+  --color-secondary: #5736a3;
+  --color-success: #5cd3a8;
+  --shadow-component: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 }
 
 * {
@@ -20,15 +29,6 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-background);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
