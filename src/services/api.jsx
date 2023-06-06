@@ -4,7 +4,9 @@ axios.defaults.baseURL = 'https://647cd15dc0bae2880ad13a57.mockapi.io';
 
 export const getTweets = async (filterOption, page) => {
   const params = new URLSearchParams();
-  filterOption && params.append('following', filterOption);
+  if (filterOption !== null) {
+    params.append('following', filterOption);
+  }
   params.append('page', page);
   params.append('limit', 8);
   try {

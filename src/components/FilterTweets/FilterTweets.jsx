@@ -1,11 +1,17 @@
 import { FilterDropdown, FilterDropdownOption } from './FilterTweets.styled';
 
-const FilterTweets = setFilterOption => {
+const FilterTweets = ({ changeFilterOption }) => {
   return (
     <FilterDropdown title="Filter">
-      <FilterDropdownOption>Show all</FilterDropdownOption>
-      <FilterDropdownOption>Follow</FilterDropdownOption>
-      <FilterDropdownOption>Followings</FilterDropdownOption>
+      <FilterDropdownOption onClick={() => changeFilterOption(null)}>
+        Show all
+      </FilterDropdownOption>
+      <FilterDropdownOption onClick={() => changeFilterOption(false)}>
+        Follow
+      </FilterDropdownOption>
+      <FilterDropdownOption onClick={() => changeFilterOption(true)}>
+        Followings
+      </FilterDropdownOption>
     </FilterDropdown>
   );
 };

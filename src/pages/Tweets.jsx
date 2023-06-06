@@ -9,30 +9,20 @@ const Tweets = () => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMoreTweets, setHasMoreTweets] = useState(true);
-  const [filterOption, setFilterOption] = useState('Show all');
+  const [filterOption, setFilterOption] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchTweets = async () => {
       try {
         setIsLoading(true);
-        switch (filterOption) {
-          case 'Show all':
-            const allTweets = await getTweets(null, 1);
-            console.log(allTweets.keys());
-            setTweets(allTweets);
-            break;
-          case 'Follow':
-            const followTweets = await getTweets(false, 1);
-            setTweets(followTweets);
-            break;
-          case 'Followings':
-            const followingsTweets = await getTweets(true, 1);
-            setTweets(followingsTweets);
-            break;
-          default:
-            setTweets(tweets);
+        const allTweets = await getTweets(filterOption, 1);
+        if (allTweets.length < 8) {
+          setHasMoreTweets(false);
+        } else {
+          setHasMoreTweets(true);
         }
+        setTweets(allTweets);
       } catch (error) {
         console.log(error);
       } finally {
@@ -47,10 +37,12 @@ const Tweets = () => {
       const fetchTweets = async page => {
         try {
           setIsLoading(true);
-          const newTweets = await getTweets(null, page);
+          const newTweets = await getTweets(filterOption, page);
           setTweets(prevTweets => [...prevTweets, ...newTweets]);
           if (newTweets.length < 8) {
             setHasMoreTweets(false);
+          } else {
+            setHasMoreTweets(true);
           }
         } catch (error) {
           console.log(error);
@@ -60,7 +52,7 @@ const Tweets = () => {
       };
       fetchTweets(page);
     }
-  }, [page, hasMoreTweets]);
+  }, [page, hasMoreTweets, filterOption]);
 
   const updateFollowing = async (id, followers, followingState) => {
     const numberOfTweets = tweets.length;
@@ -79,11 +71,16 @@ const Tweets = () => {
     setPage(page + 1);
   };
 
+  const changeFilterOption = newFilterOption => {
+    setFilterOption(newFilterOption);
+  };
+
   return (
     <>
       {isLoading && <LoaderComponent />}
       <Section>
-        {!isLoading && <FilterTweets setFilterOption={setFilterOption} />}
+        {!isLoading && <FilterTweets changeFilterOption={changeFilterOption} />}
+        {tweets.length === 0 && <h2>No tweets here...</h2>}
         <TweetsList
           allTweets={tweets}
           updateFollowing={updateFollowing}
