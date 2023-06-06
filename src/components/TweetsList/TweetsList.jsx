@@ -3,6 +3,7 @@ import {
   TweetsListStyled,
   Card,
   LogoStyled,
+  TopDecorImgStyled,
   AvatarWrapper,
   AvatarOutline,
   AvatarBackground,
@@ -14,15 +15,15 @@ import {
   ButtonStyled,
 } from './TweetsList.styled';
 import TopDecorImg from 'media/card-top-decor.png';
-import { useState } from 'react';
+import NoImgPlaceholder from 'media/no-image-placeholder.png';
 
 const TweetsList = ({
   allTweets,
   updateFollowing,
   onLoadMore,
   hasMoreTweets,
+  isLoading,
 }) => {
-  const [localFollowing] = useState(false);
   const changeLocalFollowing = (id, followers, following) => {
     updateFollowing(id, followers, following);
   };
@@ -32,11 +33,14 @@ const TweetsList = ({
         {allTweets.map(({ id, avatar, name, tweets, followers, following }) => (
           <Card key={id}>
             <LogoStyled />
-            <img src={TopDecorImg} alt="Card decor" />
+            <TopDecorImgStyled src={TopDecorImg} alt="Card decor" />
             <AvatarWrapper className="avatar-wrapper">
               <AvatarOutline className="avatar-outline">
                 <AvatarBackground>
-                  <AvatarImg src={avatar} alt="Avatar" />
+                  <AvatarImg
+                    src={avatar ? avatar : NoImgPlaceholder}
+                    alt="Avatar"
+                  />
                 </AvatarBackground>
               </AvatarOutline>
               <LineDecor className="line-decor"></LineDecor>
@@ -63,7 +67,7 @@ const TweetsList = ({
           </Card>
         ))}
       </TweetsListStyled>
-      {hasMoreTweets && (
+      {!isLoading && hasMoreTweets && (
         <ButtonStyled type="button" onClick={onLoadMore}>
           Load more
         </ButtonStyled>

@@ -12,9 +12,8 @@ export const StyledHeader = styled.header`
   top: 10px;
   left: 5%;
   right: 5%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   z-index: 10;
-  border-radius: 50px;
   box-shadow: var(--shadow-component);
   border-radius: 20px;
 `;
@@ -37,6 +36,7 @@ export const StyledNavLink = styled(NavLink)`
   align-items: center;
 
   &:hover {
+    color: var(--color-primary);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 3px;

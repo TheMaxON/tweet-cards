@@ -37,6 +37,11 @@ export const LogoStyled = styled(Logo)`
   left: 20px;
 `;
 
+export const TopDecorImgStyled = styled.img`
+  width: 308px;
+  height: 168px;
+`;
+
 export const AvatarWrapper = styled.div`
   width: 100%;
   margin: -20px 0 26px 0;
@@ -152,21 +157,21 @@ export const ButtonStyled = styled.button`
   margin: 20px 0;
   font-family: 'Montserrat', sans-serif;
   padding: 14px 28px;
-  background: var(--color-secondary);
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  background: var(--color-primary);
   border-radius: 10.3108px;
-  border: none;
+  border: 2px solid var(--color-secondary);
+  box-shadow: var(--shadow-component);
   outline: none;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.2;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-text-black);
   text-align: center;
   cursor: pointer;
 
   &:hover {
-    box-shadow: none;
-    background: #734ccc;
+    background: var(--color-secondary);
+    color: var(--color-primary);
   }
 `;
