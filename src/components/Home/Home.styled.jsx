@@ -22,5 +22,5 @@ export const Description = styled.p`
 `;
 
 export const CardsImg = styled.img`
-  width: 90%;
+  width: 85%;
 `;
