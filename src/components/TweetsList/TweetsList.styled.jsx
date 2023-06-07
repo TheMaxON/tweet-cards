@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { ReactComponent as Logo } from 'media/logo.svg';
+import { Link } from 'react-router-dom';
 
 export const TweetsListWrapper = styled.div`
   width: 100%;
@@ -11,9 +12,21 @@ export const TweetsListWrapper = styled.div`
 export const TweetsListStyled = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
   margin-bottom: 30px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1300px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1800px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const Card = styled.div`
@@ -27,6 +40,7 @@ export const Card = styled.div`
   background: var(--color-background-secondary);
   box-shadow: var(--shadow-component);
   border-radius: 20px;
+  margin: auto;
 `;
 
 export const LogoStyled = styled(Logo)`
@@ -173,5 +187,29 @@ export const ButtonStyled = styled.button`
   &:hover {
     background: var(--color-secondary);
     color: var(--color-primary);
+  }
+`;
+
+export const LinkBtnStyled = styled(Link)`
+  padding: 10px 30px;
+  margin: 0 10px;
+  background: var(--color-primary);
+  border-radius: 10.3108px;
+  border: 2px solid var(--color-secondary);
+  box-shadow: var(--shadow-component);
+  outline: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-text-black);
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    text-decoration: none;
   }
 `;

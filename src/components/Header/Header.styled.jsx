@@ -16,6 +16,7 @@ export const StyledHeader = styled.header`
   z-index: 10;
   box-shadow: var(--shadow-component);
   border-radius: 20px;
+  border: 2px solid var(--color-primary);
 `;
 
 export const StyledNav = styled.nav`

@@ -3,7 +3,7 @@ import { Loader } from 'rsuite';
 
 const LoaderComponent = () => {
   return (
-    <LoaderBackdrop className="">
+    <LoaderBackdrop>
       <Loader content="Loading..." center vertical size="lg" />
     </LoaderBackdrop>
   );

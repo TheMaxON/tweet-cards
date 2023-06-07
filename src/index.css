@@ -2,7 +2,11 @@
 @import 'rsuite/dist/rsuite.css';
 
 :root {
-  --color-background: #f9fbfc;
+  --color-background: linear-gradient(
+    180deg,
+    rgb(203 195 255) 0%,
+    rgba(249, 251, 252, 1) 100%
+  );
   --color-background-secondary: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
@@ -29,7 +33,7 @@ ul {
 body {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-background);
+  background: var(--color-background);
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
 }
